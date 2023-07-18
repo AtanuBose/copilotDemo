@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Do you see the Death Star?</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .star {
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        .blink {
+            animation: blink 0.1s step-end infinite alternate;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .scoreboard {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: lightgreen;
+            font-size: 18px;
+            padding: 10px;
+            text-align: right;
+        }
+    </style>
+
+    <script>
+        let blinkCount = 0;
+        let score = 0;
+        let playerScore = 0;
+        let scoreUpdated = false;
+        var timeOut = 1000;
+
+        const playerName = prompt("Enter player name: ");
+
+        function addScore() {
+            if (!scoreUpdated) {
+                scoreUpdated = true;
+                playerScore++;
+                document.querySelector('#playerScore').textContent = `Player ${playerName}: ${playerScore}`;
+                setTimeout(() => {
+                    scoreUpdated = false;
+                }, timeOut);
+            }
+        }
+
+        function randomStarLocation() {
+            const star = document.querySelector('.star');
+            const maxX = window.innerWidth - star.clientWidth;
+            const maxY = window.innerHeight - star.clientHeight;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            star.style.top = `${randomY}px`;
+            star.style.left = `${randomX}px`;
+        }
+
+        function blinkStar() {
+            const star = document.querySelector('.star');
+            star.classList.toggle('blink');
+
+            blinkCount++;
+
+            document.querySelector('#blinkCount').textContent = `Blinks: ${blinkCount}`;
+        }
+
+        setInterval(() => {
+            randomStarLocation();
+            blinkStar();
+        }, timeOut);
+
+        document.addEventListener('keyup', (event) => {
+            if (event.key === ' ') {
+                addScore();
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="banner" style="color: lightgrey;">
+        
+    </div>
+
+    <div class="scoreboard">
+        <div id="blinkCount">Blinks: 0</div>
+        <div id="playerScore"></div>
+    </div>
+
+    <img src="Images/death-star-small.png" alt="Blinking Star" class="star">
+
+    <footer style="position: fixed; bottom: 0; color: dimgrey; font-size: 16px;">
+        <p>To score, hit spacebar on your keyboard every time the Death Star appears on the screen and is not blinking.
+            This game was developed mostly using GitHub Copilot.</p>
+    </footer>
+
+</body>
+
+</html>
