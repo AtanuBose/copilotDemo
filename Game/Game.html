@@ -51,7 +51,7 @@
         let scoreUpdated = false;
         var timeOut = 1000;
 
-        alert("\n\nDo you see the Death Star?\n\nTo score, hit spacebar on your keyboard every time the Death Star appears on the screen and is not blinking.");
+        alert("\n\nDo you see the Death Star?\n\nTo score, click anywhere on the screen every time the Death Star appears and is not blinking.");
 
         const playerName = prompt("Enter player name: ");
 
@@ -90,8 +90,10 @@
             blinkStar();
         }, timeOut);
 
-        document.addEventListener('keyup', (event) => {
-            if (event.key === ' ') {
+        document.addEventListener('click', (event) => {
+            const star = document.querySelector('.star');
+
+            if (event != null) {
                 addScore();
             }
         });
