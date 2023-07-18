@@ -50,6 +50,8 @@
         let scoreUpdated = false;
         var timeOut = 1000;
 
+        alert("\n\nDo you see the Death Star?\n\nTo score, hit spacebar on your keyboard every time the Death Star appears on the screen and is not blinking.");
+
         const playerName = prompt("Enter player name: ");
 
         function addScore() {
@@ -96,20 +98,15 @@
 </head>
 
 <body>
-    <div class="banner" style="color: lightgrey;">
-        
-    </div>
-
     <div class="scoreboard">
         <div id="blinkCount">Blinks: 0</div>
         <div id="playerScore"></div>
     </div>
 
-    <img src="Images/death-star-small.png" alt="Blinking Star" class="star">
+    <img src="death-star-small.png" alt="Blinking Star" class="star">
 
     <footer style="position: fixed; bottom: 0; color: dimgrey; font-size: 16px;">
-        <p>To score, hit spacebar on your keyboard every time the Death Star appears on the screen and is not blinking.
-            This game was developed mostly using GitHub Copilot.</p>
+        <p>This game was developed mostly using GitHub Copilot.</p>
     </footer>
 
 </body>
