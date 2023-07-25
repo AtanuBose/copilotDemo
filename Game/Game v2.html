@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Death Star v2</title>
+    <style>
+        body {
+            background-color: #222;
+        }
+
+        .star {
+            font-size: 50px;
+            color: yellow;
+            position: absolute;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+
+    <script>
+        function randomStarLocation() {
+            const star = document.querySelector('.star');
+            const maxX = window.innerWidth - star.clientWidth;
+            const maxY = window.innerHeight - star.clientHeight;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            star.style.top = `${randomY}px`;
+            star.style.left = `${randomX}px`;
+        }
+
+        setInterval(function () {
+            randomStarLocation();
+        }, 1000);
+    </script>
+</head>
+<body>
+    <div class="star">*</div>
+</body>
+</html>
