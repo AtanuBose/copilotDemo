@@ -1,3 +1,3 @@
 add a scoreboard on the top right corner of the page. count the blinks and show on the scoreboard.
 
-take a player name as input at pageload. show the player name that was taken as input in the scroreboard.
+take a player name as input. show the player name that was taken as input in the scroreboard.
